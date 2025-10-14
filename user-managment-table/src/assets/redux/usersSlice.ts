@@ -1,13 +1,12 @@
 import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 import { fetchUsers } from "./userOperations";
-import { initialUserState, User } from "../components/App/App.types";
+import { UsersState, User } from "../components/App/App.types";
 import { RootState } from "./store";
 
-const initialState: initialUserState = {
-  name: "",
-  username: "",
-  email: "",
-  phone: "",
+const initialState: UsersState = {
+   users: [],
+  loading: false,
+  error: null,
 };
 
 const slice = createSlice({
@@ -15,12 +14,19 @@ const slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchUsers.fulfilled,
-      (state, action: PayloadAction<User[]>) => {
+    builder
+    .addCase(fetchUsers.pending, (state) => {
+        state.loading = true;
+    }
+    )
+    .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.users = action.payload;
       }
-    );
+    )
+    .addCase(fetchUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+    })
   },
 });
 

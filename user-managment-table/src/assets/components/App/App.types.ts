@@ -6,9 +6,15 @@ export interface User {
   phone: string;
 }
 
-export interface initialUserState {
+export interface filterUserState {
   name: string;
   username: string;
   email: string;
   phone: string;
+}
+
+export interface UsersState {
+  users: User[];
+  loading: boolean;
+  error: string | null;
 }

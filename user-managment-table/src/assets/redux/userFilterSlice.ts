@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { initialUserState } from "../components/App/App.types";
+import { filterUserState } from "../components/App/App.types";
 
 
-const initialState: initialUserState = {
+const initialState: filterUserState = {
     name: '',
     username: '',
     email: '',
@@ -13,7 +13,7 @@ const slice = createSlice ({
     name: 'userFilter',
     initialState,
     reducers: {
-        changeFilter: (state, action: PayloadAction<Partial<initialUserState>>) => {
+        changeFilter: (state, action: PayloadAction<Partial<filterUserState>>) => {
             return {...state, ...action.payload};
         }
     }
