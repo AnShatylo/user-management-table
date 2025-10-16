@@ -1,0 +1,55 @@
+.userTableWrap {
+  border-radius: 10px;
+  border: 1px solid rgb(0, 63, 138);
+  width: fit-content;
+  box-shadow: 0px 0px 5px rgba(0, 63, 138, 0.2);
+  overflow: hidden;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.userTable {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #fafcff;
+  width: 100%;
+}
+
+.tableHeader th {
+  padding: 5px 10px;
+  color: #fafcff;
+  background-color: #01244e;
+}
+
+.userTable tr td {
+  padding: 5px 10px;
+}
+
+.userTableBody tr:nth-child(even) {
+  background-color: #e8f2ff;
+}
+
+.userTableNotFound {
+  text-align: center;
+  padding: 10px;
+  color: #701a04;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .userTableWrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .userTable {
+    min-width: 800px;
+  }
+
+  .tableHeader th,
+  .userTable tr td {
+    font-size: 14px;
+  }
+}

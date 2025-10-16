@@ -1,10 +1,12 @@
 import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
+
 import { fetchUsers } from "./userOperations";
 import { UsersState, User } from "../components/App/App.types";
 import { RootState } from "./store";
+import { selectFilters } from "./userFilterSlice";
 
 const initialState: UsersState = {
-   users: [],
+  users: [],
   loading: false,
   error: null,
 };
@@ -15,25 +17,22 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchUsers.pending, (state) => {
+      .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
-    }
-    )
-    .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
+      })
+      .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.users = action.payload;
-      }
-    )
-    .addCase(fetchUsers.rejected, (state, action) => {
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
-    })
+      });
   },
 });
 
 export const userReducer = slice.reducer;
 
 export const selectUsers = (state: RootState) => state.users.users;
-const selectFilters = (state: RootState) => state.filters;
 
 export const selectedUsers = createSelector(
   [selectUsers, selectFilters],
@@ -52,7 +51,7 @@ export const selectedUsers = createSelector(
         .toLocaleLowerCase()
         .includes(filters.phone.toLocaleLowerCase());
 
-      return filterName || filterUserName || filterEmail || filterPhone;
+      return filterName && filterUserName && filterEmail && filterPhone;
     });
   }
 );

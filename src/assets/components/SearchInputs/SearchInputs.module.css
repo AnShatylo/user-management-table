@@ -1,0 +1,25 @@
+.input {
+  border: none;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: #e8f2ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  transition: 250ms all linear;
+}
+
+.input:focus {
+  border: 1px solid rgba(0, 63, 138, 0.1);
+  box-shadow: 0 0 5px rgba(0, 63, 138, 0.1);
+  outline: none;
+}
+
+.input::placeholder {
+  color: #79899c;
+}
+
+.tableSearch {
+  border-bottom: 1px solid #01244e2c;
+  border-top: 1px solid #01244e2c;
+}

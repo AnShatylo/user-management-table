@@ -14,7 +14,7 @@ export const fetchUsers = createAsyncThunk<
     const response = await axios.get<User[]>("/users");
     return response.data;
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Unknowт Error";
+    const message = error instanceof Error ? error.message : "Unknown Error";
     return thunkAPI.rejectWithValue(message);
   }
 });

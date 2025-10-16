@@ -18,3 +18,9 @@ export interface UsersState {
   loading: boolean;
   error: string | null;
 }
+
+export interface UsersProps {
+  users: User[];
+}
+
+export type FilterField = "name" | "username" | "email" | "phone";
